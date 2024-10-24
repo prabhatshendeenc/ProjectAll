@@ -1,0 +1,1015 @@
+<html>
+<head>
+<style>
+    .cls-mockup{ position: absolute; background:url('pages/html/drag_drop_conveyor_belt/images/mockup/01.png') no-repeat; top: 0px; left: 0px; width: 1920px; height: 1080px; opacity: 0.5; z-index: 1; display: none !important; }
+
+    .Pagebg {
+        position: absolute; 
+        background:url('pages/html/drag_drop_conveyor_belt/images/bg.png') no-repeat;
+        background-size: 100% 100%;
+		width: 1920px; 
+		height: 1080px;
+        left: 0px;  
+        top: 0px;
+        /* opacity: 0; */
+    } 
+
+    .dndWrapper {
+        position: absolute;
+        background:url('pages/html/drag_drop_conveyor_belt/images/bg_dnd.png') no-repeat;  
+        background-size: 100% 100%;
+		width: 1920px; 
+		height: 1080px;
+        left: 0px;
+        top: 0px; 
+        display: none; 
+    }
+      
+	.container{
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 1920px; 
+		height: 1080px;
+	}
+     
+	.hoverBlocker{
+		background: rgba(255, 255, 255, 0);
+		position: absolute;
+		left: 194px;
+		top: 149px;
+		width: 822px;
+		height: 320px;
+		z-index: 99;
+		display: none;
+    } 
+
+	.ui-draggable, .ui-droppable {
+        -ms-touch-action: none;
+        touch-action: none;
+	}
+    .noSwipeBlocker {
+        position: absolute;
+		width: 1920px;
+		height: 1080px;
+		top: 0px;
+		left: 0px;
+    }
+    .dropArea { 
+        position: absolute;
+        width: 256px;
+        height: 224px;
+        top: 476px;
+    }
+
+    #dropArea1 { 
+        left: 140px; 
+    }
+    #dropArea2 {  
+        left: 600px;
+    }
+    #dropArea3 {  
+        left: 1050px; 
+    }
+    #dropArea4 {
+        left: 1515px;
+    } 
+
+    .draggable {
+        position: absolute;	
+        background:url('pages/html/drag_drop_conveyor_belt/images/package_box.png') no-repeat;
+        background-size: 100% 100%; 
+        width: 345px;
+        height: 190px;
+        top: 748px;
+        left: -300px;
+        cursor: pointer; 
+    }
+    .draggable_dis {   	
+        cursor: default; 
+        opacity: 0.5 !important;
+        
+    }
+    .draggable_Enb {	 
+        cursor: pointer;
+        opacity:1;
+    }
+    .draggable_Enb:hover {	   
+        cursor: pointer;
+        opacity: 1;
+    } 
+    
+    /* .draggable span{ position: absolute; top: 52px; left: 58px; font-size: 1.2em; font-family: ac_light; font-weight: bold; } */
+    .draggable span{ position: absolute; top: 46px; left: 66px; font-size: 0.65em; font-weight: bold; }
+
+	.boldText{
+		font-family:arial_bold;
+	}
+
+    .packageSmartLabel {
+        position: absolute;
+        background: url(pages/html/drag_drop_conveyor_belt/images/package.png) no-repeat;
+        background-size: 100% 100%;
+        background: #ffffff;
+        border: 3px solid #000000;
+        border-radius: 20px;
+        width: 400px;
+        height: 266px;
+        top: 130px;
+        right: 30px;
+        display: none;
+    }
+    .shipTo_txt { 
+        font-family: ac_light;
+        margin-top: 11px;
+        margin-left: 21px;
+        font-size: 17px;
+        line-height: 1.3;
+    }
+    .shipTo_txt b {
+        font-family: ac_light;
+        font-weight: bold;
+    }
+    .staticMiddle_txt {
+        /* padding: 0 5px; */
+        margin-top: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 30px;
+        font-weight: bold;
+        border-bottom: 2px solid #000000;
+        font-family: ac_light;
+        margin: 7px 40px 0 19px;
+    }
+    .shippingAndCode_txt {
+        /* padding: 0 3px; */
+        margin-top: -3px;
+        font-size: 50px;
+        font-family: ac_light;
+        margin: 0px 30px 3px 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-weight: bold;
+    }
+    .shippingAndCode_txt > div:last-child{ display: flex; justify-content: center; align-items: center; font-family: 'arial_regular'; }
+    .shippingAndCode_txt > div:last-child > span:last-child{ width: 50px; height: 50px; border: 2px solid #000; display: inline-block; margin-left: 2px; margin-right: 10px; }
+     
+    .tracking_txt { 
+        /* padding: 0px 3px; */
+        margin-top: -5px;
+        margin-left: 1px;
+        border-bottom: 2px solid #000000;
+        font-size: 16px;
+        font-family: ac_light;
+        margin: -12px 40px 0 22px;
+    } 
+    .packetFooter_txt {
+       /*  padding: 0 5px; */
+        margin-top: 1px;
+        margin-left: 1px;
+        font-size: 16px;
+        font-family: ac_light;
+        line-height: 1;
+        margin: 4px 30px 0 22px;
+    }
+ 
+    .startGameContainer, .gameRulesContainer, .cls-blocker, .video_container{
+        position: absolute;
+		width: 1920px;
+		height: 1080px;
+		top: 0px;
+        left: 0px;
+        display: none;
+    }
+    .video_container video{ 
+        width: 100%;
+        height: 100%;
+    }
+
+    .cls-blocker{ display: block; }
+    .startGameContainer {
+        background: url(pages/html/drag_drop_conveyor_belt/images/startpage_sheen.png) no-repeat; 
+        background-size: 100% 100%; 
+        /* opacity: 0; */
+    } 
+
+    .clsStartContainerBg{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        right: 0px;
+        bottom: 0px;
+        margin: auto;
+        width: 1428px;
+        height: 620px;
+        background: url(pages/html/drag_drop_conveyor_belt/images/startpage_bg.png) no-repeat;
+    }
+
+    .startUPSLogo {   
+        position: absolute;
+        background: url(pages/html/drag_drop_conveyor_belt/images/start_ups_logo.png) no-repeat;
+        background-size: 100% 100%;
+        width: 158px;
+        height: 192px;
+        top: 140px;
+        left: 0px;
+        right: 0;
+        margin: 0 auto;
+        /* transform: matrix(0.7, 0, 0, 0.7, 0, 0); */
+        /* opacity: 0; */
+    } 
+    .startGameHeading {  
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        color: #ffffff;
+        font-family: arial_bold;
+       /*  text-shadow: 0px 1px 7px #000000; */
+    }
+    .startGameHeading {   
+        top: 390px;
+        font-size: 4em;
+        /* top: 356px; */
+        /* opacity: 0; */
+    } 
+    .playGamePanel {
+        position: absolute;
+        width: 357px;
+        height: 1080px;
+        top: 0px;
+        right: 0px;
+    } 
+    .text { 
+        position: absolute;
+        width: 828px;
+        color: #ffffff;
+        font-size: 16px;
+        font-family: arial_regular;
+        text-align: center;
+        line-height: 1.3;
+    }
+ 
+    .userNameLabel {
+        position: relative;
+        width: 417px;
+        text-align: center;
+        color: #cc6600;
+        font-size: 28px;
+        font-family: cursive;
+        font-weight: bold;
+        text-transform: uppercase;
+        background: #ffffff;
+        border-radius: 10px 10px 0px 0px;
+        text-shadow: 0px 1px 2px #23430C;
+        border: 2px solid #000000;
+        display: none;
+    }
+    .user_name {
+        position: relative;
+        width: 395px;
+        height: 40px;
+        padding: 10px;
+        color: #000000;
+        font-size: 28px;
+        font-family: cursive;
+        font-weight: bold;
+        text-align: center; 
+        background: #ffffff;
+        border: 2px solid #000000;
+        display: none;
+    }
+    .startGameBtn { 
+        /* position: absolute;
+        background: url(pages/html/drag_drop_conveyor_belt/images/start_bt_normal.png) no-repeat;
+        background-size: 100% 100%; */
+        position: absolute;
+        width: 240px;
+        height: 70px;
+        color: #000000;
+        font-family: arial_regular;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: #FFB406;
+    }
+    .startGameBtn:hover {
+        /* background: url(pages/html/drag_drop_conveyor_belt/images/start_bt_hover.png) no-repeat; 
+        background-size: 100% 100%; */
+        cursor: pointer;
+        background: #456da8;
+        color: #ffffff;
+    }
+
+    .startGameBtn { 
+        bottom: -20px;
+        left: 30px;
+        right: 0;
+        margin: 0 auto;
+        /* opacity: 0; */
+        /* display: none; */
+    }
+ 
+    .playGameBtn { 
+        position: absolute;
+        width: 280px;
+        height: auto;
+        top: 718px;
+        left: -525px;
+        padding: 12px 0px;
+        color: #000000;
+        font-family: arial_regular;
+        font-size: 40px;
+        background: #FFB406;
+        text-align: center;
+        display: none;
+    }
+    .playGameBtn:hover { 
+        cursor: pointer;
+        background: #456da8;
+        color: #ffffff;
+    } 
+
+    .btn-on-player{
+        position: absolute;
+        color: #ffffff;
+        font-family: arial_regular;
+        font-size: 1.8em;        
+        top: 11px;
+        display: none;
+    }
+    .btn-cc-tutorial{ left: 30px; }
+    .btn-play-pause-tutorial{ right: 204px; }
+    .btn-skip-tutorial{ right: 66px; }
+
+    .btn-on-player:hover { cursor: pointer; color: #ffb406; }
+
+    .btn-on-player span{ 
+        position: absolute;
+        top: 10px;
+        right: -30px;
+        background: url("pages/html/drag_drop_conveyor_belt/images/player_btns.png") no-repeat;
+    }
+    .btn-cc-tutorial span{ width: 34px; height: 39px; top: 0px; right: -42px; }
+    .btn-cc-tutorial[type='off'] span{ background-position: -34px -46px; }
+    .btn-cc-tutorial[type='off']:hover span{ background-position: 0px -46px; }
+    .btn-cc-tutorial[type='on'] span{ background-position: -102px -46px; }
+    .btn-cc-tutorial[type='on']:hover span{ background-position: -68px -46px; }
+
+    .btn-play-pause-tutorial span{ width: 19px; height: 23px; }
+    .btn-play-pause-tutorial[type='pause'] span{ background-position: -19px 0px; }
+    .btn-play-pause-tutorial[type='pause']:hover span{ background-position: 0px 0px; }
+    .btn-play-pause-tutorial[type='play'] span{ background-position: -57px 0px; }
+    .btn-play-pause-tutorial[type='play']:hover span{ background-position: -38px 0px; }
+
+    .btn-skip-tutorial span{ width: 23px; height: 23px; background-position: -23px -23px; }
+    .btn-skip-tutorial:hover span{ background-position: 0px -23px; }
+
+    .btn-on-player.cls-disabled{ opacity: 0.2; pointer-events: none; }
+
+    .gameLevel {
+        position: absolute;
+        top: 39px;
+        left: 40px;
+        color: #ffffff;
+        font-size: 41px;
+        font-family: DSDigital;
+    }
+    .gameScore {
+        position: absolute;
+        top: 39px;
+        left: 214px;
+        color: #ffffff;
+        font-size: 41px;
+        font-family: DSDigital;
+    }
+
+    .gameResultPanel .gameScore{ font-size: 3.8em; }
+
+    .gameScore.correctBlink, .gameScore span.correctBlink {   
+        color: #ffffff; 
+        animation: correct_Blink 0.7s;
+        animation-iteration-count: 3;
+        opacity: 1;
+    }
+
+    .gameScore.wrongBlink, .gameScore span.wrongBlink {
+        color: #ffffff;
+        animation: wrong_Blink 0.7s;
+        animation-iteration-count: 3;
+        opacity: 1;
+    }
+
+    @keyframes correct_Blink {
+        from {color: #3eb812; opacity: 1;}
+        to {color: #3eb812; opacity: 0;}
+    }
+
+    @keyframes wrong_Blink {
+        from {color: #f17b08; opacity: 1;}
+        to {color: #f17b08; opacity: 0;}
+    }
+    .countdownTimer {
+        position: absolute;
+        font-family: DSDigital;
+        font-size: 41px;
+        color: #ffffff;
+        right: 212px;
+        top: 39px;
+        width: 130px;
+        height: 50px;
+        text-align: center;
+        border-right: 2px solid #ffffff;
+        opacity: 1;
+    } 
+    .clsCountdownTimerDisable {
+        opacity: 0.5;
+    } 
+
+    .draggableAnimate {
+        left: 15px;
+        /* animation-name: dragAnimate; */
+        /* animation-duration: 1s; */
+        /* animation-iteration-count: infinite; */
+        /* animation-timing-function: linear; */
+        /* animation-fill-mode: forwards; */
+    } 
+
+    @keyframes dragAnimate {
+        form { left: -150px; }
+        to { left: 15px; } 
+    }
+ 
+    .header, .footer {
+        position: absolute;
+        background: #456da8;
+        width: 1920px;
+        height: 28px;
+    }
+
+    .header {
+        height: 35px;
+        top: -38px;
+        background: url('media/images/common/top_bg.png') no-repeat;
+    }
+    .header_1 {
+        position: absolute;
+        /* background: url(pages/html/drag_drop_conveyor_belt/images/header.png) no-repeat; */
+        background: url(media/images/common/top_bg_center.png) center no-repeat;
+        width: 516px;
+        height: 60px;
+        top: -62px;
+        left: 0px;
+        right: 0;
+        margin: 0 auto;
+    }
+
+    .header_1_animate {
+        animation-name: header_animate;
+        animation-duration: 0.5s; 
+        animation-timing-function: linear;
+        animation-fill-mode: forwards; 
+    }
+    @keyframes header_animate {
+        form { top: -62px;}
+        to { top: 0px; } 
+    }
+    .footer_1_animate {
+        animation-name: footer_animate;
+        animation-duration: 0.5s; 
+        animation-timing-function: linear;
+        animation-fill-mode: forwards; 
+    }
+    @keyframes footer_animate {
+        form { bottom: -30px;}
+        to { bottom: 0px; } 
+    }
+    .header_ups_logo {
+        position: absolute;
+        background: url(pages/html/drag_drop_conveyor_belt/images/header_ups_logo.png) no-repeat;
+        background-size: 100% 100%;
+        width: 36px;
+        height: 43px;
+        top: 9px;
+        left: 86px;
+    }
+    .header_line_1 {
+        position: absolute;
+        background: #ffffff;
+        width: 2px;
+        height: 50px;
+        top: 38px;
+        left: 198px;
+    }
+    .header_line_2 {
+        position: absolute;
+        background: #000000;
+        width: 2px;
+        height: 48px;
+        top: 6px;
+        left: 148px;
+    }
+    .header_line_3 { 
+        left: 410px;
+        display: none;
+    }
+    
+    .header_text {
+        position: absolute;
+        color: #000000;
+        font-family: 'arial_bold';
+        font-size: 28px;
+        left: 178px;
+        top: 12px;
+    }
+    .footer {
+        height: 60px;
+        bottom: -60px;
+        background: url('media/images/common/bottom_bg.png') no-repeat;
+    }
+    .gameRulesContainer {
+       background-color: #000000;
+    }
+
+    .cls-conveyor-belt{
+        position: absolute;
+        bottom: -22px;
+        left: 0;
+        width: 100%;
+        height: 280px;
+        background: url('pages/html/drag_drop_conveyor_belt/images/convyeor_belt_hr.png');
+        background-position: 0% 100%;
+    }
+
+    .cls-msg-box {
+        position: absolute;
+        top: 240px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: auto;
+        background: #FFB406;
+        color: #000000;
+        font-size: 2em;
+        padding: 0.4em 1.4em;
+        border-radius: 10px;
+        display: none;
+    }
+
+    .cls-text{
+        position: absolute;
+        padding: 0.2em 1em;
+        font-size: 1.6em;
+        background: #FFB406;
+        opacity: 0;
+        display: none;
+    }
+    #idText_1{ top: 360px; left: 50%; transform: translateX(-50%); }
+
+    .highlight{
+        outline: 8px solid red;
+        animation: olBlink 0.4s ease-in-out alternate 6;
+    }
+    @keyframes olBlink {
+        0%{ outline-color: transparent; }
+        100%{ outline-color: red; }
+    }
+
+    #clsAudioOnBtn.clsAudioDis{ opacity: 1 !important; pointer-events: none;}
+
+    .close-caption-text{ position: absolute; top: 17px; left: 314px; width: auto; height: auto; font-size: 1.4em; color: #ffffff; line-height: 1.2; font-family: 'arial_regular'; display: none; }
+
+</style>
+
+<!-- <script src="pages/html/drag_drop_conveyor_belt/js/json_data.js"></script> -->
+<script src="pages/html/drag_drop_conveyor_belt/js/drag_and_drop_tryme.js"></script>
+<script src="pages/html/drag_drop_conveyor_belt/js/game.js"></script>
+
+<script> 
+    manifest = [  
+        { src:'pages/html/drag_drop_conveyor_belt/images/bg.png', id: '1'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/bg_dnd.png', id: '2'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/blank_star.png', id: '3'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/convyeor_belt_hr.png', id: '4'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/cross.png', id: '5'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/result_bg.png', id: '6'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/header.png', id: '7'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/header_ups_logo.png', id: '8'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/incorrect_highlight.png', id: '9'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/line_faded.png', id: '10'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/package_box.png', id: '11'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/sheen.png', id: '12'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/wrong_3_bg.png', id: '13'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/play_ups_logo.png', id: '14'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/result_panel_line.png', id: '15'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/sheen.png', id: '16'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/startpage_bg.png', id: '17'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/startpage_sheen.png', id: '18'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/start_ups_logo.png', id: '19'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/star_gold.png', id: '20'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/star_sprite.png', id: '21'},
+        { src:'pages/html/drag_drop_conveyor_belt/images/player_btns.png', id: '22'},
+    ];
+
+	var audioPath = '';
+
+	// var audioPath = 'pages/html/drag_drop_conveyor_belt/audio/Location7a_1stIncorrect';
+
+    var gItemAudioPath = [
+        "pages/html/drag_drop_conveyor_belt/audio/music/voice/lets_try_again",
+        "pages/html/drag_drop_conveyor_belt/audio/blank",
+        "pages/html/drag_drop_conveyor_belt/audio/blank",
+        "pages/html/drag_drop_conveyor_belt/audio/blank",
+        "pages/html/drag_drop_conveyor_belt/audio/blank_rules" 
+    ];
+
+	var currCue = 0;
+    
+    var updateContentArray = [
+        {time:"0.0", show:"", hide:"", transcript:"",animation:[{target:".container",duration:"0.5",activity:{'display':'block'}}, {target:".Pagebg, .startGameContainer",duration:"0.5",activity:{'opacity':'1'}}]},
+
+		{time:"0.5", show:"", hide:"", transcript:"",animation:[{target:".header",duration:"0.5",activity:{'top':'0px'}}, {target:".footer",duration:"0.5",activity:{'bottom':'0px'}}]},
+
+        // {time:"1.0", show:"", hide:"", transcript:"",animation:[{target:".startUPSLogo",duration:"0.5",activity:{'opacity':'1', 'transform':'matrix(1.2, 0, 0, 1.2, 0, 0)'}}] },
+ 
+        // {time:"1.5", show:"", hide:"", transcript:"",animation:[{target:".startUPSLogo",duration:"0.5",activity:{'transform':'matrix(1, 0, 0, 1, 0, 0)'}}] },
+ 
+        {time:"2.0", show:"", hide:"", transcript:"",animation:[{target:".startGameHeading",duration:"0.5",activity:{'opacity':'1'}}] },
+        
+		{time:"2.5", show:"", hide:"", transcript:"",animation:[{target:"#startGameBtn",duration:"0.5",activity:{'opacity':'1', 'display':'flex'}}]},
+
+		{time:"3.0", show:"", hide:"", event:"", transcript:""}
+	];
+
+    var videoUCA = {
+        video_0:[
+            {time:"0.1", transcript:"Welcome to the Match the Load ID game." },
+            {time:"3.95", transcript:"In this game, you will practice identifying the package car on which a" },
+            {time:"7.4", transcript:"package must be loaded based on its Load ID on the PAL." },
+            {time:"13.35", transcript:"Let’s see how to play the game." },
+            {time:"15.4", transcript:"Pick the package from the belt. Do not drop it." },
+            {time:"19.5", transcript:"Notice the PAL that appeared." },
+            {time:"21.2", transcript:"PAL stands for Preload Assist Label." },
+            {time:"25.2", transcript:"This label lets you know where to load a package in a package car." },
+            {time:"28.95", transcript:"The first part of the PAL indicates the Load ID of the" },
+            {time:"32.15", transcript:"package car in which the package must be loaded." },
+            {time:"35.35", transcript:"Here it shows 12C." },
+            {time:"37.9", transcript:"So, place the package on the package car with the Load ID 12C." }
+        ],
+        video_1: [
+            {time:"0.1", transcript:"Let’s look at the other elements of this game." },
+            {time:"3.05", transcript:"Your score appears here." },
+            {time:"5.5", transcript:"There are 10 levels in the game." },
+            {time:"8.0", transcript:"You progress to the next level when you successfully load 5 packages." },
+            {time:"12.5", transcript:"The speed of the belt increases as you complete each level." },
+            {time:"16.65", transcript:"You have 90 seconds to load the packages." },
+            {time:"19.8", transcript:"You can select this option to switch off and switch on the audio." },
+            {time:"24.55", transcript:"You will get 3 stars if the score is above 30 points, " },
+            {time:"28.35", transcript:"2 stars if the score is between 25 to 29 points," },
+            {time:"31.8", transcript:"and 1 star if the score is between 20 to 24 points." },
+            {time:"36.0", transcript:"Aim for 3 stars! Good luck." }
+        ]
+    }
+
+	var popupContentArray0 = [
+		{time:"0.1", transcript:"Why don’t you try now?",animation:[{target:"",duration:"0.5",activity:{'display':'none'}}]},
+		{time:"2.2", transcript:"Pick the package from the belt. Do not drop it.",animation:[{target:"#idText_1",duration:"0.5",activity:{'display':'block', 'opacity': '1'}}]},
+		{time:"6.0", transcript:"Check the Load ID number of the package car on the PAL,"},
+		{time:"9.2", transcript:"and then place the package in the correct package car."}
+	];
+
+	var popupContentArray1 = [
+		{time:"0.0", show:"", hide:"", transcript:"Not quite. Click Show Answer to view the answers.", event:"",animation:[{target:".hoverBlocker",duration:"0.5",activity:{'display':'block'}}]},
+		{time:"1.0", show:"", hide:"", transcript:"", event:""}
+	];
+
+	var popupContentArray2 = [
+		{time:"0.0", show:"", hide:"", transcript:"That’s correct! You have made the correct matches!",animation:[{target:".hoverBlocker",duration:"0.5",activity:{'display':'block'}}]},
+		{time:"1.0", show:"", hide:"",event:"" }
+    ];
+
+	var popupContentArray3 = [
+        {time:"1.0", show:"", hide:"", transcript:"",animation:[{target:".rulesBg",duration:"0.5",activity:{'opacity':'1'}}]},
+
+        {time:"2.0", show:"", hide:"", transcript:"",animation:[{target:".rules_txt_04",duration:"0.5",activity:{'opacity':'1'}}]},
+        {time:"3.0", show:"", hide:"", transcript:"",animation:[{target:".rules_txt_02",duration:"0.5",activity:{'opacity':'1'}}]},
+        {time:"4.0", show:"", hide:"", transcript:"",animation:[{target:".rules_txt_01",duration:"0.5",activity:{'opacity':'1'}}]},
+        {time:"5.0", show:"", hide:"", transcript:"",animation:[{target:".rules_txt_03",duration:"0.5",activity:{'opacity':'1'}}]},
+
+        {time:"6.0", show:"", hide:"", transcript:"",animation:[{target:".line_faded",duration:"0.5",activity:{'opacity':'1'}}]},
+ 
+        {time:"7.0", show:"", hide:"", transcript:"",animation:[{target:".play_gold_star",duration:"0.5",activity:{'opacity':'1'}}]},
+        {time:"8.0", show:"", hide:"", transcript:"",animation:[{target:".play_silver_star",duration:"0.5",activity:{'opacity':'1'}}]},
+        {time:"9.0", show:"", hide:"", transcript:"",animation:[{target:".play_bronze_star",duration:"0.5",activity:{'opacity':'1'}}]},
+
+        {time:"10.0", show:"", hide:"", transcript:"",animation:[{target:".text5",duration:"0.5",activity:{'opacity':'1'}}]},
+
+        {time:"11.0", show:"", hide:"", event:"fnPlaySoundEffect()", transcript:"",animation:[{target:"",duration:"0.5",activity:{'opacity':'1'}}]},
+
+        {time:"12.0", show:"", hide:"", transcript:"",animation:[{target:".text6",duration:"0.5",activity:{'opacity':'1'}}]},
+
+		{time:"13.0", show:"", hide:"", transcript:"",animation:[{target:".playGameBtn",duration:"0.5",activity:{'display':'flex'}}]},
+         
+        {time:"14.0", show:"", hide:"",event:"" }
+	];
+ 
+    var userName = BVScorm_GetUserName();
+    var userNumber = BVScorm_GetUserNumber();
+
+    var videoPaths = [
+        'pages/html/drag_drop_conveyor_belt/video/help_screen_1.mp4',
+        'pages/html/drag_drop_conveyor_belt/video/help_screen_2.mp4'
+    ]
+
+    var videoObjectId = document.getElementById('myVideo');
+    function fnSetVideoToPage(_vIndex){
+        currCue = 0;
+        videoObjectId = document.getElementById('myVideo');
+        videoObjectId.src = videoPaths[_vIndex];
+        videoObjectId.setAttribute('videoIndex', _vIndex);
+        updateContentArray = videoUCA['video_'+_vIndex];
+        videoObjectId.ontimeupdate = function (evt) {            
+            try{
+				//UpdateTheVideoTimePage(videoObjectId.currentTime);
+                UpdateTheVideoTime(videoObjectId.currentTime);
+		    }catch(e){} 
+        }
+        videoObjectId.onended = function (evt) {
+            var _vIndex = videoObjectId.getAttribute('videoIndex');
+            if(parseInt(_vIndex) == (videoPaths.length - 1)){
+                //$('.btn-on-player').fadeOut();
+                $("#btnSkipTutorial, #btnPlayPauseTutorial").addClass('cls-disabled');
+                $("#btnPlayPauseTutorial").attr('type', 'play');
+                $("#btnPlayPauseTutorial").html('Play<span></span>');
+                $('#playGameBtn').fadeIn();
+            }else{
+                //fnShowTryMe();
+                playGameTryMe();
+            }
+            videoObjectId = null;
+        }
+        //videoObjectId.muted = true;
+        videoObjectId.play();
+    }
+    
+    function fnPlaySoundEffect() {
+        playSFXAudio('star_sound');
+        $(".play_gold_star_small").show(); 
+    }
+
+    function initGame() {
+        fnAudioBtnShowHide(false);
+        document.getElementById("user_name").value = BVScorm_GetUserName();
+
+        $("#gameResultContainer").hide(); 
+        $("#startGameContainer").show();
+
+        $("#startGameBtn").off( "click" ).on( "click", function() {
+            //fnAudioBtnShowHide(true);
+            $("#startGameContainer").fadeOut();
+            fnSetVideoToPage(0);
+            fnshowTranscript();
+            $("#gameRulesContainer,.video_container").fadeIn();
+            $('.btn-on-player').css('display', 'block');
+            //playGameTryMe();
+            
+            $("#topHeader,#header_1").addClass("header_1_animate");
+            $("#bottomFooter").addClass("footer_1_animate");
+        }); 
+
+        $("#playGameBtn, #btnSkipTutorial").off( "click" ).on( "click", function() { 
+            fnGetPage('NEXT');
+            //playGame();
+        });
+
+        $("#btnPlayPauseTutorial").off( "click" ).on( "click", function() { 
+            if($(this).attr('type') == 'pause'){
+                $(this).attr('type', 'play');
+                $(this).html('Play<span></span>');
+                fnPauseAudio();
+                fnPlayPauseGame(true);
+            }else{
+                $(this).attr('type', 'pause');
+                $(this).html('Pause<span></span>');
+                fnPlayAudio();
+                fnPlayPauseGame(false);
+            }
+        });
+
+        $("#btnCCTutorial").off( "click" ).on( "click", function() { 
+            if($(this).attr('type') == 'off'){
+                $(this).attr('type', 'on');
+                $(this).html('Transcript On<span></span>');
+                fnshowTranscript();
+            }else{
+                $(this).attr('type', 'off');
+                $(this).html('Transcript Off<span></span>');
+                fnhideTranscript();
+            }
+        });
+    }
+
+    function playGameTryMe() { 
+        fnPlayItemAudio(0);
+        fnAudioBtnShowHide(true);
+        EnableFooterButtons(false);
+        $("#gameRulesContainer, #gameResultContainer").fadeOut();
+        //$("#btnSkipTutorial, #btnPlayPauseTutorial").addClass('cls-disabled');
+        $("#startGameContainer").fadeOut(); 
+        $("#dndWrapper").fadeIn();
+
+        fnConveyorBeltAnim();
+        user_details.gameUser = BVScorm_GetUserName();                
+        fnSetBgMusic("conveyor_belt");
+        setTickTickAudio();
+    }
+
+    function fnCorrectlyDrop(){
+        fnPauseBgMusic();
+        fnSetVideoToPage(1);
+        fnAudioBtnShowHide(false);
+        EnableFooterButtons(true);
+        $("#dndWrapper").fadeOut();
+        $("#gameRulesContainer,#rulesVideoContainer").fadeIn();
+        $("#btnSkipTutorial, #btnPlayPauseTutorial").removeClass('cls-disabled');
+        $("#btnPlayPauseTutorial").attr('type', 'pause');
+        $("#btnPlayPauseTutorial").html('Pause<span></span>');
+    }
+
+	function fnPlayItemAudio(gCurrentIndex) {
+		gAudioId='audio_'+(gCurrentIndex); 
+        fnSetCurrSndObj(null);
+        fnResetCurrentCue();
+        updateContentArray = eval("popupContentArray"+gCurrentIndex);
+        fnHideShowAudioPlayer( false );
+        initializeJplayer(gItemAudioPath[gCurrentIndex]); 
+	}
+ 
+	function fnEnbDrag(){
+		$(".draggable").removeClass("draggable_dis").addClass("draggable_Enb");
+	}
+
+    var pkgAnimObj = null;
+    function fnPlayPauseGame(_isPause){
+        if(!spriteAnimObj){
+            return;
+        }
+        if(_isPause){
+            spriteAnimObj.pause();
+            //pkgAnimObj.pause();
+        }else{
+            spriteAnimObj.play();
+           // pkgAnimObj.play();
+        }
+    }
+
+	function fnOnAudioComplete() { 
+        if(gAudioId=="startAudio"){  
+            // fnAudioFinishItemComp(); 
+        } 
+        if(gAudioId == 'audio_0'){
+            $('#btnPlayPauseTutorial').attr('type', 'play').html('Play<span></span>').addClass('cls-disabled');
+            setTimeout(function() { 
+                fnConveyorBeltAnim();             
+                fnEnbDrag();
+                initDragDrop();
+                pkgAnimObj = TweenLite.to("#drag1", 6, {left: "600px", ease:Linear.easeNone, onComplete:function(){ 
+                    $('#drag1').attr('initLeft', '600px');
+                    spriteAnimObj.kill();
+                    //isPkgAnimEnd = true;
+                    //$('#idText_1').fadeIn();
+                }});
+            }, 100);
+        }
+    }
+
+    $(document).ready(function() {
+        msgObj.correct.isShow = true;
+        if(gameCompleted) {
+            $("#header_1").addClass("header_1_animate");
+            gameOver();
+        } else {
+            initGame();
+        }
+    });
+		
+</script>
+
+</head>
+
+<body>
+	<div class="pg-pageContent"> 
+        <!-- <div class="cls-mockup"></div> -->
+		<div class="container">
+			<div class="Pagebg"></div>		
+ 
+			<div class="dndWrapper" id="dndWrapper">
+				<div class="noSwipeBlocker noSwipe" id="dndConatiner">
+					<div class="gameLevel" id="gameLevel">Level: <span>1</span></div>
+                    <div class="header_line_1"></div>
+                    <div class="gameScore" id="gameScore">Score: <span>1</span></div> 
+                    
+                    <div class="countdownTimer clsCountdownTimerDisable" id="countdownTimer">01:30</div>
+
+                    <div class="packageSmartLabel" id="packageSmartLabel">
+                        <div class="shipTo_txt" id="shipTo_txt">JACQUELINE COX<br>(290)398-6676<br>9242 FOURTEENTH LANE<br><b>San Marcos, GA 30349</b></div> 
+
+                        <div class="staticMiddle_txt" id="staticMiddle_txt"><span>P: RED</span><span>S:TBLUE</span><span>I:202</span></div> 
+                        
+                        <div class="shippingAndCode_txt" id="shippingAndCode_txt">
+                            <div>
+                                <span id="shipping_txt">05A</span> - <span id="code_txt">7851</span>
+                            </div>
+                            <div>
+                                <span>X</span>
+                                <span></span>
+                            </div>
+                        </div> 
+
+                        <div class="tracking_txt" id="tracking_txt">TRACKING #: 1Z 614 676 58 8829 3370</div> 
+
+                        <div class="packetFooter_txt" id="packetFooter_txt">RO9D38PFSSU    OHMID148    Oct  01    13:39:34  2004 TB  7702  HIP  5.4.1  ELT2543</div>
+                    </div>
+
+
+                    <div class="cls-text" id="idText_1">Pick the package from the belt and place it on the correct package car.</div>
+
+                    <div id="idMessageBox" class="cls-msg-box"></div>
+                    <div id="idLvlIncrease" class="cls-lvl-increase">Level 1</div>
+
+                    <div id="conveyorBelt" class="cls-conveyor-belt"></div>
+
+					<div class='dropArea' id='dropArea1' correctDrag="drag1" CAR="05A"></div>	
+                    <div class='dropArea' id='dropArea2' correctDrag="drag2" CAR="05B"></div>
+                    <div class='dropArea' id='dropArea3' correctDrag="drag3" CAR="12B"></div>
+                    <div class='dropArea' id='dropArea4' correctDrag="drag4" CAR="12C"></div>
+                    <div class="draggable draggable_dis" id="drag1" CAR="05A" index=""><span>05A - 7851</span></div> 
+                 </div>
+            </div>
+
+            <div class="startGameContainer" id="startGameContainer">
+                <div class="clsStartContainerBg">
+                    <div class="startUPSLogo"></div>
+                    <div class="startGameHeading">Match The Load ID</div> 
+                    <div class="startGameBtn" id="startGameBtn">Start</div>
+                </div>
+            </div> 
+
+            <div class="gameRulesContainer" id="gameRulesContainer"> 
+
+                <div class="video_container" id="rulesVideoContainer">
+                    <video id="myVideo" videoIndex="first" poster="">
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+
+                <div class="cls-blocker"></div>
+
+                <!-- <div class="rulesBg"></div>
+                
+                <div class="rules_txt rules_txt_01"><span>Speed of the belt increases as you cross each level.</span></div>
+
+                <div class="rules_txt rules_txt_02"><span>Check the Load ID on the PAL to load the packages.</span></div>
+
+                <div class="rules_txt rules_txt_03"><span>You have 90 seconds to load the packages.</span></div>
+
+                <div class="rules_txt rules_txt_04"><span>Pick the packages from the belt to see its PAL.</span></div> -->
+
+                <form action="javascript:void(0)" method="POST" id="myForm" name="myForm"> 
+                    <div class="playGamePanel" id="playGamePanel">
+                        <!-- <div class="line_faded"></div>
+                        <div class="play_star play_gold_star"><span>30 points or more</span></div>
+                        <div class="play_star play_silver_star"><span>25-29 points</span></div>
+                        <div class="play_star play_bronze_star"><span>20-24 points</span></div>
+
+                        <div class="play_gold_star_small"></div>
+    
+                        <div class="text text5">Aim for the</div>
+                        <div class="text text6">All the best!</span></div>-->
+    
+                        <div class="userNameLabel">Enter your name here</div> 
+                        <input type="text" class="user_name" id="user_name" name="user_name" value="" required> 
+    
+                        <div class="playGameBtn" id="playGameBtn">Start Game</div>
+                    </div>
+                </form>                
+            </div> 
+        <div class="header" id="topHeader"></div>
+        <div class="header_1" id="header_1">
+            <div class="header_ups_logo"></div>
+            <div class="header_line_2"></div>
+            <div class="header_text">Match The Load ID</div> 
+        </div>
+        <div class="footer" id="bottomFooter">
+            <div id="btnCCTutorial" class="btn-cc-tutorial btn-on-player" type="on">Transcript On<span></span></div>
+            <div id="btnPlayPauseTutorial" class="btn-play-pause-tutorial btn-on-player" type="pause">Pause<span></span></div>
+            <div id="btnSkipTutorial" class="btn-skip-tutorial btn-on-player">Skip<span></span></div>
+        </div>
+	</div>					
+</body>
+</html>
+
+
